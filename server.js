@@ -1,9 +1,9 @@
 const express = require('express');
-const { exec } = require('child_process');
-const path = require('path');
-
+const cors = require('cors');
 const app = express();
-const PORT = 3000;
+
+// ✅ Enable CORS
+app.use(cors());
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -11,8 +11,8 @@ app.use(express.json());
 app.post('/check', (req, res) => {
     const word = req.body.word;
 
-    // ✅ Windows-compatible exec (uses trie.exe)
-    exec(`trie.exe ${word}`, (err, stdout, stderr) => {
+    const { exec } = require('child_process');
+    exec(`./trie.exe ${word}`, (err, stdout, stderr) => {
         if (err) {
             console.error("Execution error:", stderr);
             res.status(500).send("❌ Error running trie.exe");
@@ -22,6 +22,6 @@ app.post('/check', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`✅ Server is running at http://localhost:${PORT}`);
+app.listen(3000, () => {
+    console.log("✅ Server is running at http://localhost:3000");
 });
