@@ -152,6 +152,9 @@ int main(int argc, char* argv[]) {
     }
 
     string str = argv[1];
+    for (char &c : str) {
+        c = tolower(c);
+    }
 
     Trie* trie = new Trie();
     ifstream file("dictionary.txt");
