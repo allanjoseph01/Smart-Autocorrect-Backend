@@ -44,18 +44,6 @@ struct Trie
         return false;
     }
 
-    bool search_prefix(string& word){
-        Trie* trev=this;
-        int siz=word.length();
-        for(int i=0;i<siz;i++){
-            if(trev->childs[word[i]-'a']==nullptr){
-                return false;
-            }
-            trev=trev->childs[word[i]-'a'];
-        }
-        return true;
-    }
-
     bool delete_word(string& word){
         Trie* trev=this;
         int siz=word.length();
@@ -165,11 +153,8 @@ int main(int argc, char* argv[]) {
     }
 
     string word;
-    // int count=0;
     while (file >> word) {
         trie->insert_word(word);
-        // count++;
-        // cout << count << endl;
     }
     file.close();
 
