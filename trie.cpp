@@ -136,8 +136,10 @@ void minDistance(string word) {
         pq.push({(-1)*dist,word2});
     }
     file.close();
-    for(int i=0;i<2;i++){
-        cout << i+1 << ". " << pq.top().second << endl;
+    int c=1;
+    while(((pq.top().first)*(-1))<=2 && c<=10){
+        cout << c << ". " << pq.top().second << endl;
+        c++;
         pq.pop();
     }
 }
