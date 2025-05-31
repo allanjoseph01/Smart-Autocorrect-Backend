@@ -160,8 +160,11 @@ int main(int argc, char* argv[]) {
     }
 
     string word;
+    // int count=0;
     while (file >> word) {
         trie->insert_word(word);
+        // count++;
+        // cout << count << endl;
     }
     file.close();
 
